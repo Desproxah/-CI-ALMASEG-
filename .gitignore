@@ -1,0 +1,23 @@
+# Salidas de compilación
+[Bb]in/
+[Oo]bj/
+dist/
+publish/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+*.vspscc
+*.vssscc
+
+# Recursos generados por herramientas
+*.log
+*.tmp
+*.bak
+
+# Sistema operativo
+Thumbs.db
+desktop.ini
