@@ -220,17 +220,28 @@ namespace CIAlmaseg.Clases
             string nombre = etiqueta.Name.ToLowerInvariant();
             float tamano = etiqueta.Font.SizeInPoints;
 
-            if (nombre.Contains("titulo"))
-            {
-                etiqueta.Font = Fuente(Math.Max(17F, Math.Min(tamano, 22F)), FontStyle.Bold);
-                etiqueta.ForeColor = Marino;
-                return;
-            }
-
+            // "subtitulo" contiene "titulo": revisar primero.
             if (nombre.Contains("subtitulo") || nombre.StartsWith("label"))
             {
                 etiqueta.Font = Fuente(9.5F, FontStyle.Regular);
                 etiqueta.ForeColor = TextoSuave;
+                return;
+            }
+
+            if (nombre.Contains("titulo"))
+            {
+                // Título principal del formulario (≥15 pt) frente a
+                // títulos de sección dentro de pestañas (12 pt).
+                if (tamano >= 15F)
+                {
+                    etiqueta.Font = Fuente(Math.Max(17F, Math.Min(tamano, 22F)), FontStyle.Bold);
+                }
+                else
+                {
+                    etiqueta.Font = Fuente(Math.Max(11.5F, tamano), FontStyle.Bold);
+                }
+
+                etiqueta.ForeColor = Marino;
                 return;
             }
 
@@ -486,7 +497,10 @@ namespace CIAlmaseg.Clases
 
         public static void EstilizarCombo(ComboBox combo)
         {
-            combo.FlatStyle = FlatStyle.Flat;
+            // FlatStyle.System conserva el borde nativo del combo; con
+            // Flat el borde se pinta con el color de fondo y el control
+            // parece no tener contorno.
+            combo.FlatStyle = FlatStyle.System;
             combo.BackColor = Blanco;
             combo.ForeColor = Texto;
             combo.Font = Fuente(9.5F);

@@ -123,11 +123,8 @@
             this.cmbTipoDocumento.FormattingEnabled = true;
             this.cmbTipoDocumento.Items.AddRange(new object[] {
             "Cédula de ciudadanía",
-            "",
             "Cédula de extranjería",
-            "",
             "NIT",
-            "",
             "Pasaporte"});
             this.cmbTipoDocumento.Location = new System.Drawing.Point(30, 50);
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
