@@ -36,7 +36,6 @@
             this.lblClienteTitulo = new System.Windows.Forms.Label();
             this.lblClienteDescripcion = new System.Windows.Forms.Label();
             this.btnVerCatalogo = new System.Windows.Forms.Button();
-            this.lblConexion = new System.Windows.Forms.Label();
             this.lblPie = new System.Windows.Forms.Label();
             this.pnlMarca = new System.Windows.Forms.Panel();
             this.pnlMonograma = new System.Windows.Forms.Panel();
@@ -80,7 +79,6 @@
             this.pnlTarjeta.Controls.Add(this.pnlRoles);
             this.pnlTarjeta.Controls.Add(this.pnlCredenciales);
             this.pnlTarjeta.Controls.Add(this.pnlCliente);
-            this.pnlTarjeta.Controls.Add(this.lblConexion);
             this.pnlTarjeta.Controls.Add(this.lblPie);
             this.pnlTarjeta.Location = new System.Drawing.Point(90, 60);
             this.pnlTarjeta.Name = "pnlTarjeta";
@@ -288,17 +286,6 @@
             this.btnVerCatalogo.UseVisualStyleBackColor = false;
             this.btnVerCatalogo.Click += new System.EventHandler(this.btnVerCatalogo_Click);
             // 
-            // lblConexion
-            // 
-            this.lblConexion.AutoSize = true;
-            this.lblConexion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.lblConexion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblConexion.Location = new System.Drawing.Point(40, 500);
-            this.lblConexion.Name = "lblConexion";
-            this.lblConexion.Size = new System.Drawing.Size(113, 13);
-            this.lblConexion.TabIndex = 5;
-            this.lblConexion.Text = "● Verificando conexión...";
-            // 
             // lblPie
             // 
             this.lblPie.Font = new System.Drawing.Font("Segoe UI", 8.25F);
@@ -487,7 +474,6 @@
             this.Text = "CI Almaseg · Iniciar sesión";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmLogin_FormClosed);
             this.Load += new System.EventHandler(this.FrmLogin_Load);
-            this.Shown += new System.EventHandler(this.FrmLogin_Shown);
             this.pnlAcceso.ResumeLayout(false);
             this.pnlTarjeta.ResumeLayout(false);
             this.pnlTarjeta.PerformLayout();
@@ -523,7 +509,6 @@
         private System.Windows.Forms.Label lblClienteTitulo;
         private System.Windows.Forms.Label lblClienteDescripcion;
         private System.Windows.Forms.Button btnVerCatalogo;
-        private System.Windows.Forms.Label lblConexion;
         private System.Windows.Forms.Label lblPie;
         private System.Windows.Forms.Panel pnlMarca;
         private System.Windows.Forms.Panel pnlMonograma;

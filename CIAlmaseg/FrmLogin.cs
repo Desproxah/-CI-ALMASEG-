@@ -3,7 +3,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CIAlmaseg.Clases;
 
@@ -44,7 +43,6 @@ namespace CIAlmaseg
             Tema.TituloSeccion(lblClienteTitulo);
             Tema.Subtitulo(lblClienteDescripcion);
             Tema.Subtitulo(lblPie);
-            Tema.Subtitulo(lblConexion);
             lblPie.ForeColor = Color.FromArgb(148, 163, 184);
 
             lblMarca.ForeColor = Color.White;
@@ -64,24 +62,6 @@ namespace CIAlmaseg
             ActualizarModo(false);
             CentrarTarjeta();
             txtCorreo.Focus();
-        }
-
-        private async void FrmLogin_Shown(object sender, EventArgs e)
-        {
-            lblConexion.ForeColor = Tema.TextoSuave;
-            lblConexion.Text = "● Verificando conexión con la base de datos...";
-
-            bool conectado = await Task.Run(() => Conexion.ProbarConexion());
-
-            if (IsDisposed)
-            {
-                return;
-            }
-
-            lblConexion.ForeColor = conectado ? Tema.Exito : Tema.Peligro;
-            lblConexion.Text = conectado
-                ? "● Base de datos conectada"
-                : "● Sin conexión · ejecuta scripts\\init-db.ps1";
         }
 
         private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)

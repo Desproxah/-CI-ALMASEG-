@@ -34,7 +34,6 @@
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.pnlContenido = new System.Windows.Forms.Panel();
             this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblEstadoBD = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblSubtituloPagina = new System.Windows.Forms.Label();
             this.lblTituloPagina = new System.Windows.Forms.Label();
@@ -237,7 +236,6 @@
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.White;
-            this.pnlHeader.Controls.Add(this.lblEstadoBD);
             this.pnlHeader.Controls.Add(this.lblFecha);
             this.pnlHeader.Controls.Add(this.lblSubtituloPagina);
             this.pnlHeader.Controls.Add(this.lblTituloPagina);
@@ -247,18 +245,6 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(1030, 78);
             this.pnlHeader.TabIndex = 0;
-            // 
-            // lblEstadoBD
-            // 
-            this.lblEstadoBD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblEstadoBD.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.lblEstadoBD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblEstadoBD.Location = new System.Drawing.Point(730, 43);
-            this.lblEstadoBD.Name = "lblEstadoBD";
-            this.lblEstadoBD.Size = new System.Drawing.Size(270, 17);
-            this.lblEstadoBD.TabIndex = 3;
-            this.lblEstadoBD.Text = "● Verificando conexión...";
-            this.lblEstadoBD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblFecha
             // 
@@ -351,7 +337,6 @@
         private System.Windows.Forms.Panel pnlPrincipal;
         private System.Windows.Forms.Panel pnlContenido;
         private System.Windows.Forms.Panel pnlHeader;
-        private System.Windows.Forms.Label lblEstadoBD;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblSubtituloPagina;
         private System.Windows.Forms.Label lblTituloPagina;

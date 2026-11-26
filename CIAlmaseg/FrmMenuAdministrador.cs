@@ -17,7 +17,6 @@ namespace CIAlmaseg
         private Label lblProductos;
         private Label lblStockBajo;
         private Label lblClientes;
-        private Label lblEstadoDashboard;
 
         public bool CerrandoSesion { get; private set; }
 
@@ -232,7 +231,7 @@ namespace CIAlmaseg
             principal.AutoSize = true;
             principal.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             principal.ColumnCount = 1;
-            principal.RowCount = 5;
+            principal.RowCount = 4;
             principal.BackColor = Color.Transparent;
             principal.Margin = Padding.Empty;
             principal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -241,13 +240,11 @@ namespace CIAlmaseg
             principal.RowStyles.Add(new RowStyle(SizeType.Absolute, 132F));
             principal.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             principal.RowStyles.Add(new RowStyle(SizeType.Absolute, 306F));
-            principal.RowStyles.Add(new RowStyle(SizeType.Absolute, 94F));
 
             principal.Controls.Add(CrearBienvenida(), 0, 0);
             principal.Controls.Add(CrearIndicadores(), 0, 1);
             principal.Controls.Add(CrearTituloAccesos(), 0, 2);
             principal.Controls.Add(CrearAccesos(), 0, 3);
-            principal.Controls.Add(CrearEstadoSistema(), 0, 4);
 
             pnlContenido.Controls.Add(principal);
         }
@@ -466,56 +463,8 @@ namespace CIAlmaseg
             return tarjeta;
         }
 
-        private Control CrearEstadoSistema()
-        {
-            Panel tarjeta = new Panel();
-            tarjeta.Dock = DockStyle.Fill;
-            tarjeta.Margin = new Padding(6, 14, 6, 0);
-            Tema.Tarjeta(tarjeta);
-
-            Label titulo = Tema.CrearEtiqueta("Estado del sistema", 10.5F, FontStyle.Bold, Tema.Marino);
-            titulo.Location = new Point(20, 18);
-
-            Label detalle = Tema.CrearEtiqueta(
-                "SQL Server LocalDB · Base de datos Ci.Almaseg.Ferreteria.Final",
-                8.75F,
-                FontStyle.Regular,
-                Tema.TextoSuave);
-            detalle.Location = new Point(20, 43);
-
-            lblEstadoDashboard = Tema.CrearEtiqueta(
-                "● Verificando conexión...",
-                9F,
-                FontStyle.Bold,
-                Tema.TextoSuave);
-            lblEstadoDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lblEstadoDashboard.Location = new Point(20, 28);
-            lblEstadoDashboard.AutoSize = false;
-            lblEstadoDashboard.Size = new Size(230, 22);
-            lblEstadoDashboard.TextAlign = ContentAlignment.MiddleRight;
-
-            tarjeta.Resize += delegate
-            {
-                lblEstadoDashboard.Left = Math.Max(20, tarjeta.ClientSize.Width - lblEstadoDashboard.Width - 20);
-            };
-
-            tarjeta.Controls.Add(lblEstadoDashboard);
-            tarjeta.Controls.Add(detalle);
-            tarjeta.Controls.Add(titulo);
-            return tarjeta;
-        }
-
         private async Task CargarResumenAsync()
         {
-            lblEstadoBD.Text = "● Consultando base de datos...";
-            lblEstadoBD.ForeColor = Tema.TextoSuave;
-
-            if (lblEstadoDashboard != null)
-            {
-                lblEstadoDashboard.Text = "● Consultando base de datos...";
-                lblEstadoDashboard.ForeColor = Tema.TextoSuave;
-            }
-
             try
             {
                 DataTable datos = await Task.Run(() => ObtenerResumen());
@@ -531,15 +480,6 @@ namespace CIAlmaseg
                 lblProductos.Text = Convert.ToInt32(fila["productos"]).ToString("N0");
                 lblStockBajo.Text = Convert.ToInt32(fila["stock_bajo"]).ToString("N0");
                 lblClientes.Text = Convert.ToInt32(fila["clientes"]).ToString("N0");
-
-                lblEstadoBD.Text = "● Base de datos conectada";
-                lblEstadoBD.ForeColor = Tema.Exito;
-
-                if (lblEstadoDashboard != null)
-                {
-                    lblEstadoDashboard.Text = "● Base de datos conectada";
-                    lblEstadoDashboard.ForeColor = Tema.Exito;
-                }
             }
             catch (Exception)
             {
@@ -547,15 +487,6 @@ namespace CIAlmaseg
                 lblProductos.Text = "—";
                 lblStockBajo.Text = "—";
                 lblClientes.Text = "—";
-
-                lblEstadoBD.Text = "● Sin conexión a SQL Server";
-                lblEstadoBD.ForeColor = Tema.Peligro;
-
-                if (lblEstadoDashboard != null)
-                {
-                    lblEstadoDashboard.Text = "● Sin conexión · revisa la base de datos";
-                    lblEstadoDashboard.ForeColor = Tema.Peligro;
-                }
             }
         }
 

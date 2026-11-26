@@ -73,7 +73,7 @@ ORDER BY nombre;";
 
                         DataRow todas = tabla.NewRow();
                         todas["id_categoria"] = 0;
-                        todas["nombre"] = "Todas las categorías";
+                        todas["nombre"] = "Todos los productos";
                         tabla.Rows.InsertAt(todas, 0);
 
                         cargandoCategorias = true;
